@@ -998,10 +998,18 @@ class IGService:
         endpoint = '/session'
         action = 'update'
         response = self._req(action, endpoint, params, session)
-        self._set_headers(response.headers, False)
+        self.crud_session._set_headers(response.headers, False)
         data = self.parse_response(response.text)
         return data
 
+    def read_session(self, session=None):
+        """Retrieves current session details"""
+        params = {}
+        endpoint = '/session'
+        action = 'read'
+        response = self._req(action, endpoint, params, session)
+        data = self.parse_response(response.text)
+        return data
     ############ END ############
 
 
